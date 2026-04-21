@@ -1,130 +1,93 @@
 /* =====================================================
-   STEP 1 — UX BASELINE (Global Design Tokens + Layout)
-   ใช้ทั้งเว็บ แก้ครั้งเดียว
+   GLOBAL & BACKGROUND (ปรับเพื่อให้ Glass เห็นชัด)
    ===================================================== */
-
-/* ===== A) Design Tokens ===== */
-:root {
-  --bg-page: #f4f7fb;
-  --bg-card: #ffffff;
-  --bg-soft: #eef4ff;
-
-  --primary: #2563eb;
-  --success: #16a34a;
-  --warning: #f59e0b;
-  --danger: #dc2626;
-  --gray: #6b7280;
-
-  --text-main: #111827;
-  --text-muted: #6b7280;
-
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-
-  --shadow-sm: 0 2px 8px rgba(0,0,0,.04);
-  --shadow-md: 0 8px 24px rgba(0,0,0,.06);
-
-  --space-xs: 6px;
-  --space-sm: 12px;
-  --space-md: 20px;
-  --space-lg: 32px;
-}
-
-/* ===== B) Global Reset ===== */
-* {
-  box-sizing: border-box;
-}
 
 body {
   margin: 0;
   font-family: Arial, "Segoe UI", sans-serif;
-  background: var(--bg-page);
+
+  /* ✅ พื้นหลังสำหรับ Glassmorphism */
+  background: linear-gradient(
+    180deg,
+    #6772e5 0%,
+    #764ba2 100%
+  );
+
   color: var(--text-main);
+  min-height: 100vh;
+}
+
+/* Layout (ไม่จำกัด top-nav) */
+.layout {
+  min-height: 100vh;
 }
 
 /* =====================================================
-   Layout
+   TOP NAV (Glassmorphism – FINAL)
    ===================================================== */
-
-.layout {
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* ================= TOP NAV (Glassmorphism) ================= */
 
 .top-nav {
   position: fixed;
-  top: 16px;
+  top: 18px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
+  z-index: 9999;
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 32px;
 
-  min-width: 800px;
-  padding: 10px 16px;
+  padding: 12px 22px;
+  min-width: 760px;
 
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 
-  border-radius: 40px;
-  box-shadow: 0 15px 40px rgba(0,0,0,.15);
+  border-radius: 999px;
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.25),
+    inset 0 0 0 1px rgba(255,255,255,.25);
 }
 
 /* Left */
 .nav-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #fff;
+  color: white;
   font-weight: 600;
-}
-
-.nav-back {
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.nav-logo {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 /* Center Menu */
 .nav-menu {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .nav-item {
   border: none;
-  padding: 10px 20px;
-  border-radius: 999px;
   background: transparent;
   color: white;
+
+  padding: 10px 22px;
+  border-radius: 999px;
   font-size: 15px;
   cursor: pointer;
 
-  transition: 
-    background .25s ease,
-    box-shadow .25s ease,
-    transform .15s ease;
+  transition: all .25s ease;
 }
 
 .nav-item:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255,255,255,0.18);
 }
 
 .nav-item.active {
-  background: rgba(255, 255, 255, 0.35);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.3);
+  background: rgba(255,255,255,0.35);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.6),
+    inset 0 -1px 1px rgba(0,0,0,.1);
   font-weight: 600;
 }
 
@@ -136,242 +99,20 @@ body {
   font-size: 18px;
 }
 
-.nav-icon {
-  cursor: pointer;
-}
+/* =====================================================
+   MAIN CONTENT
+   ===================================================== */
 
-/* ===== Main Content ===== */
 .content {
-  flex: 1;
-  background: var(--bg-page);
-  padding: var(--space-lg);
-  overflow-y: auto;
+  padding: 120px 32px 32px;  /* ✅ เว้นให้เมนูลอย */
+  min-height: 100vh;
 }
 
-/* iframe pages */
+/* iframe */
 iframe {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 140px);
   border: none;
-  background: var(--bg-page);
-}
-
-/* =====================================================
-   Page Structure
-   ===================================================== */
-
-.section {
-  margin-bottom: var(--space-lg);
-}
-
-/* Page Header */
-.page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--space-lg);
-}
-
-.page-title {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.page-subtitle {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-top: 4px;
-}
-
-/* =====================================================
-   Cards (Core UX Component)
-   ===================================================== */
-
-.card {
-  background: var(--bg-card);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
-  box-shadow: var(--shadow-md);
-  margin-bottom: var(--space-md);
-}
-
-.card-header {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: var(--space-sm);
-}
-
-.card-muted {
-  background: var(--bg-soft);
-}
-
-/* =====================================================
-   KPI / Summary Cards
-   ===================================================== */
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
-}
-
-.card b {
-  display: block;
-  font-size: 13px;
-  margin-bottom: 6px;
-  font-weight: 600;
-}
-
-.card .value {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: .2px;
-}
-
-/* KPI Color Presets */
-.card.green {
-  background: #dcfce7;
-  color: #166534;
-}
-
-.card.red {
-  background: #fee2e2;
-  color: #991b1b;
-}
-
-.card.blue {
-  background: #dbeafe;
-  color: #1e40af;
-}
-
-.card.gray {
-  background: #f3f4f6;
-  color: #374151;
-}
-
-/* =====================================================
-   Status / Risk Badge
-   ===================================================== */
-
-.badge {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.badge-high {
-  background: #fee2e2;
-  color: #991b1b;
-}
-
-.badge-medium {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-.badge-low {
-  background: #dcfce7;
-  color: #166534;
-}
-
-/* =====================================================
-   Bullet Chart
-   ===================================================== */
-
-.bullet-box {
-  margin: 24px 0 32px 0;
-}
-
-.bullet-title {
-  font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-
-.bullet-bg {
-  position: relative;
-  height: 26px;
-  background: #e5e7eb;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-}
-
-.bullet-result {
-  position: absolute;
-  height: 100%;
-  background: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 8px;
-  color: white;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.bullet-target {
-  position: absolute;
-  top: -6px;
-  width: 3px;
-  height: 38px;
-  background: #111827;
-}
-
-.bullet-target-label {
-  position: absolute;
-  top: -22px;
-  transform: translateX(-50%);
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.bullet-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: #374151;
-  margin-top: 6px;
-}
-
-/* =====================================================
-   Table
-   ===================================================== */
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-  background: var(--bg-card);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-}
-
-th {
-  background: #f1f5f9;
-  font-weight: 600;
-  padding: 10px;
-  border-bottom: 1px solid #e5e7eb;
-  text-align: left;
-}
-
-td {
-  padding: 10px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-tbody tr:hover {
-  background: #f8fafc;
-}
-
-td.good {
-  background: #dcfce7;
-  font-weight: 600;
-}
-
-td.bad {
-  background: #fee2e2;
-  font-weight: 600;
+  border-radius: 18px;
+  background: #ffffff;
 }

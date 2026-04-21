@@ -9,27 +9,29 @@
 <body>
 <div class="layout">
 
-  <!-- ================= Sidebar ================= -->
-<aside class="sidebar">
-  <h3>Enterprise Risk</h3>
+<!-- ================= Top Navigation ================= -->
+<nav class="top-nav">
+  <div class="nav-container">
 
-<button class="active" onclick="loadPage('plan.html', this)">
-  📋 Plan
-</button>
+    <div class="nav-left">
+      <span class="nav-back">◀</span>
+      <span class="nav-logo">Enterprise Risk</span>
+    </div>
 
-<button onclick="loadPage('kri.html', this)">
-  📊 KRI
-</button>
+    <div class="nav-menu">
+      <button class="nav-item active">Plan</button>
+      <button class="nav-item">KRI</button>
+      <button class="nav-item">Risk Matrix</button>
+      <button class="nav-item">Risk Response</button>
+    </div>
 
-<button onclick="loadPage('matrix.html', this)">
-  🟦 Risk Matrix
-</button>
+    <div class="nav-right">
+      <span class="nav-icon">🔍</span>
+      <span class="nav-icon">👤</span>
+    </div>
 
-<button onclick="loadPage('risk-response.html', this)">
-  🔁 Risk Response
-</button>
-
-</aside>
+  </div>
+</nav>
 
   <!-- ================= Main Content ================= -->
   <main class="content" style="display:flex; flex-direction:column;">

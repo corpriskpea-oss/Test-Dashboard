@@ -54,34 +54,77 @@ body {
 }
 
 /* ===== Sidebar ===== */
+/* =====================================================
+   SIDEBAR UX (Narrow + PayTrack Style)
+   ===================================================== */
+
+/* Sidebar container */
 .sidebar {
-  width: 240px;
+  width: 200px;                /* ✅ แคบลงจากเดิม 240px */
   background: #0f172a;
-  color: white;
-  padding: 18px;
+  color: #e5e7eb;
+  padding: 16px 12px;
 }
 
+/* Sidebar title */
 .sidebar h3 {
-  margin: 0 0 20px 0;
-  font-size: 18px;
+  margin: 0 0 20px 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+/* Section label (เช่น "หลัก", "รายงาน", "ระบบ") */
+.sidebar .menu-section {
+  margin: 18px 0 6px 8px;
+  font-size: 12px;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+/* Menu button */
+.sidebar button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+
+  color: #e5e7eb;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+
+  transition: background .15s ease, color .15s ease;
+}
+
+/* Hover */
+.sidebar button:hover {
+  background: #1e293b;
+}
+
+/* Active (เหมือน pill สีฟ้าในรูป) */
+.sidebar button.active {
+  background: #2563eb;
+  color: white;
   font-weight: 600;
 }
 
-.sidebar button {
-  width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 8px;
-  background: none;
-  border: none;
+/* Optional: badge ตัวเลข (เช่น 12 สีแดง) */
+.sidebar .menu-badge {
+  margin-left: auto;
+  background: #ef4444;
   color: white;
-  text-align: left;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-}
-
-.sidebar button:hover,
-.sidebar button.active {
-  background: #334155;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 999px;
 }
 
 /* ===== Main Content ===== */

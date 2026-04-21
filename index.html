@@ -10,25 +10,30 @@
 <div class="layout">
 
   <!-- ================= Sidebar ================= -->
-  <aside class="sidebar">
-    <h3>Enterprise Risk</h3>
+ <aside class="sidebar">
+  <h3>Enterprise Risk</h3>
 
-    <button class="active" onclick="loadPage('plan.html', this)">
-      Plan
-    </button>
+  <div class="menu-section">หลัก</div>
 
-    <button onclick="loadPage('kri.html', this)">
-      KRI
-    </button>
+  <button class="active" onclick="loadPage('plan.html', this)">
+    📋 Plan
+  </button>
 
-    <button onclick="loadPage('matrix.html', this)">
-      Risk Matrix
-    </button>
+  <button onclick="loadPage('kri.html', this)">
+    📊 KRI
+    <span class="menu-badge">12</span>
+  </button>
 
-    <button onclick="loadPage('risk-response.html', this)">
-      Risk Response
-    </button>
-  </aside>
+  <button onclick="loadPage('matrix.html', this)">
+    🟦 Risk Matrix
+  </button>
+
+  <div class="menu-section">ระบบ</div>
+
+  <button onclick="loadPage('risk-response.html', this)">
+    🔁 Risk Response
+  </button>
+</aside>
 
   <!-- ================= Main Content ================= -->
   <main class="content" style="display:flex; flex-direction:column;">

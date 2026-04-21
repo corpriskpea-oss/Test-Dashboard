@@ -7,41 +7,50 @@
 </head>
 
 <body>
+
 <div class="layout">
 
-<!-- ================= Top Navigation ================= -->
-<nav class="top-nav">
-  <div class="nav-container">
+  <!-- ================= Top Navigation ================= -->
+  <nav class="top-nav">
+    <div class="nav-container">
 
-    <div class="nav-left">
-      <span class="nav-back">◀</span>
-      <span class="nav-logo">Enterprise Risk</span>
+      <div class="nav-left">
+        <span class="nav-logo">Enterprise Risk</span>
+      </div>
+
+      <div class="nav-menu">
+        <button class="nav-item active"
+                onclick="loadPage('plan.html', this)">
+          Plan
+        </button>
+
+        <button class="nav-item"
+                onclick="loadPage('kri.html', this)">
+          KRI
+        </button>
+
+        <button class="nav-item"
+                onclick="loadPage('matrix.html', this)">
+          Risk Matrix
+        </button>
+
+        <button class="nav-item"
+                onclick="loadPage('risk-response.html', this)">
+          Risk Response
+        </button>
+      </div>
+
     </div>
-
-    <div class="nav-menu">
-      <button class="nav-item active">Plan</button>
-      <button class="nav-item">KRI</button>
-      <button class="nav-item">Risk Matrix</button>
-      <button class="nav-item">Risk Response</button>
-    </div>
-
-    <div class="nav-right">
-      <span class="nav-icon">🔍</span>
-      <span class="nav-icon">👤</span>
-    </div>
-
-  </div>
-</nav>
+  </nav>
 
   <!-- ================= Main Content ================= -->
-  <main class="content" style="display:flex; flex-direction:column;">
+  <main class="content" style="margin-top:100px;">
 
-    <!-- Iframe Area -->
     <iframe
       id="mainFrame"
       src="plan.html"
-      style="flex:1; border-radius:12px;"
-    ></iframe>
+      style="width:100%; height:calc(100vh - 120px); border:none; border-radius:12px;">
+    </iframe>
 
   </main>
 
@@ -50,14 +59,18 @@
 <!-- ================= Script ================= -->
 <script>
 function loadPage(page, btn){
+  // เปลี่ยนหน้าใน iframe
   document.getElementById("mainFrame").src = page;
 
-  document.querySelectorAll(".sidebar button")
+  // ลบ active ออกจากเมนูทั้งหมด
+  document.querySelectorAll(".nav-item")
     .forEach(b => b.classList.remove("active"));
 
+  // ใส่ active ให้ปุ่มที่กด
   btn.classList.add("active");
 }
 </script>
 
 </body>
 </html>
+``

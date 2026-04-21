@@ -3,74 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <title>Enterprise Risk Dashboard – v.final.1.00</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<div class="layout">
+<!-- ================= Icon Menu ================= -->
+<ul class="icon-menu">
+  <li class="icon active"
+      onclick="loadPage('plan.html', this)">
+    <span class="tooltip">Plan</span>
+    <i class="fas fa-clipboard-list"></i>
+  </li>
 
-  <!-- ================= Top Navigation ================= -->
-  <nav class="top-nav">
-    <div class="nav-container">
+  <li class="icon"
+      onclick="loadPage('kri.html', this)">
+    <span class="tooltip">KRI</span>
+    <i class="fas fa-chart-column"></i>
+  </li>
 
-      <div class="nav-left">
-        <span class="nav-logo">Enterprise Risk</span>
-      </div>
+  <li class="icon"
+      onclick="loadPage('matrix.html', this)">
+    <span class="tooltip">Risk Matrix</span>
+    <i class="fas fa-border-all"></i>
+  </li>
 
-      <div class="nav-menu">
-        <button class="nav-item active"
-                onclick="loadPage('plan.html', this)">
-          Plan
-        </button>
+  <li class="icon"
+      onclick="loadPage('risk-response.html', this)">
+    <span class="tooltip">Risk Response</span>
+    <i class="fas fa-rotate"></i>
+  </li>
+</ul>
 
-        <button class="nav-item"
-                onclick="loadPage('kri.html', this)">
-          KRI
-        </button>
+<!-- ================= Main Content ================= -->
+<main class="content">
 
-        <button class="nav-item"
-                onclick="loadPage('matrix.html', this)">
-          Risk Matrix
-        </button>
+  <iframe
+    id="mainFrame"
+    src="plan.html"
+    style="width:100%; height:100%; border:none; border-radius:18px;">
+  </iframe>
 
-        <button class="nav-item"
-                onclick="loadPage('risk-response.html', this)">
-          Risk Response
-        </button>
-      </div>
-
-    </div>
-  </nav>
-
-  <!-- ================= Main Content ================= -->
-  <main class="content" style="margin-top:100px;">
-
-    <iframe
-      id="mainFrame"
-      src="plan.html"
-      style="width:100%; height:calc(100vh - 120px); border:none; border-radius:12px;">
-    </iframe>
-
-  </main>
-
-</div>
+</main>
 
 <!-- ================= Script ================= -->
 <script>
-function loadPage(page, btn){
-  // เปลี่ยนหน้าใน iframe
+function loadPage(page, el){
+  // เปลี่ยนหน้า iframe
   document.getElementById("mainFrame").src = page;
 
-  // ลบ active ออกจากเมนูทั้งหมด
-  document.querySelectorAll(".nav-item")
-    .forEach(b => b.classList.remove("active"));
+  // ลบ active ทั้งหมด
+  document.querySelectorAll(".icon-menu .icon")
+    .forEach(i => i.classList.remove("active"));
 
-  // ใส่ active ให้ปุ่มที่กด
-  btn.classList.add("active");
+  // ใส่ active ตัวที่กด
+  el.classList.add("active");
 }
 </script>
 
 </body>
 </html>
-``

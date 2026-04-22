@@ -1,50 +1,141 @@
 /* =====================================================
-   TOOLTIP (Social Media Popup Style)
+   RESET
    ===================================================== */
-
-.icon-menu .icon {
-  position: relative;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.icon-menu .tooltip {
+/* =====================================================
+   GLOBAL BACKGROUND
+   ===================================================== */
+body {
+  font-family: Arial, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #6772e5 0%, #764ba2 100%);
+}
+
+/* =====================================================
+   TOP LEFT TITLE
+   ===================================================== */
+.top-title {
+  position: fixed;
+  top: 18px;
+  left: 24px;
+  z-index: 10000;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   ICON MENU (IMPORTANT PART)
+   ===================================================== */
+ul {
+  list-style: none; /* ✅ ลบ bullet */
+}
+
+.icon-menu {
+  position: fixed;
+  top: 90px;             /* ✅ กัน tooltip โดนขอบ */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 18px;
+  z-index: 9999;
+}
+
+.icon {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.icon i {
+  font-size: 22px;
+  color: #444;
+  transition: color .25s ease;
+}
+
+/* Hover icon */
+.icon:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 50px rgba(0,0,0,.35);
+}
+
+/* Active */
+.icon.active {
+  background: #e74c3c;
+}
+
+.icon.active i {
+  color: white;
+}
+
+/* =====================================================
+   TOOLTIP (Social Media Popup Style)
+   ===================================================== */
+.tooltip {
   position: absolute;
-  top: -58px;                 /* ลอยขึ้นด้านบน */
+  top: -56px;
   left: 50%;
   transform: translateX(-50%) scale(0.85);
 
-  padding: 6px 16px;
-  background: #e74c3c;        /* สีแดงแบบตัวอย่าง */
-  color: #fff;
-
+  background: #e74c3c;
+  color: #ffffff;
   font-size: 13px;
-  font-weight: 500;
+  padding: 6px 16px;
   border-radius: 18px;
   white-space: nowrap;
 
   opacity: 0;
   pointer-events: none;
 
-  transition:
-    opacity .25s ease,
-    transform .25s ease;
+  transition: opacity .25s ease, transform .25s ease;
 }
 
-/* ลูกศรด้านล่าง */
-.icon-menu .tooltip::before {
+/* Tooltip arrow */
+.tooltip::before {
   content: "";
   position: absolute;
   bottom: -6px;
   left: 50%;
   transform: translateX(-50%);
-
   border-width: 6px 6px 0;
   border-style: solid;
   border-color: #e74c3c transparent transparent;
 }
 
-/* Hover effect */
-.icon-menu .icon:hover .tooltip {
+/* Hover show tooltip */
+.icon:hover .tooltip {
   opacity: 1;
   transform: translateX(-50%) scale(1);
+}
+
+/* =====================================================
+   MAIN CONTENT & IFRAME
+   ===================================================== */
+.content {
+  padding-top: 180px;
+}
+
+iframe {
+  width: 100%;
+  height: calc(100vh - 200px);
+  border: none;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
 }
 ``
